@@ -16,6 +16,7 @@ class TitleHeader extends Component {
       '20px'}}>304,923 Wanderers Online</h1>
         </div>
         <h2 style = {{'font-size': '14px', padding: '20px', 'margin-top': '0px'}}>“the realization that each random passerby is living a life as vivid and complex as your own... an epic story that continues invisibly around you...in which you might appear only once...as an extra sipping coffee in the background,...as a lighted window at dusk.”</h2>
+        <h2>testing</h2>
       </div>
     );
   }
