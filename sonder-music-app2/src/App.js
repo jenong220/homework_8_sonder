@@ -2,12 +2,23 @@ import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';
 import silhouette from './Assets/Sillouette - Mid Fi.png';
+import silhouetteHighlighted from './Assets/Silhouette-Highlighted.png';
 import background from './Assets/image_7.png';
 import loginBackground from './Assets/Login_Background.png';
 import albumcovertemp from './Assets/Temp_Album_Cover.jpg';
 import historyIcon from './Assets/History Icon II.png';
 import likedIcon from './Assets/Liked Icon II.png';
 import msgsIcon from './Assets/Msgs Icon II.png';
+import playButton from './Assets/Play_Small.png';
+import pauseButton from './Assets/Pause_Small.png';
+
+//Hover Play Page 1
+import song1 from './Assets/Who I\'m Meant To Be - Anthem Lights.mp3';
+import song1Cover from './Assets/Who_Im_Meant_to_Be_Cover.jpg';
+
+//Hover Play Page 2
+import song2 from './Assets/Casting Crowns - Voice of Truth.mp3';
+import song2Cover from './Assets/Casting Crown Album Cover.jpg';
 
 
 //Groundwork to link up to Spotify API - Thank You to JoeKarlsson (see write-up)
@@ -64,24 +75,29 @@ let logInStyle = {
 
 }
 
-let hoverPlayStyle = {
+let hoverPlayStyleGen = {
   height: '100px',
-  width: '200px',
-  borderRadius: '5px',
+  width: '300px',
+  border: 'solid',
+  borderRadius: '8px',
   borderColor: 'rgba(136, 55, 131, 1.0)',
   borderWidth: '1.5px',
-  backgroundColor: 'rgba(242, 242, 242, 0.4)',
-  color: 'rgba(136, 55, 131, 1.0)'
-
+  backgroundColor: 'rgba(199, 89, 75, 0.2',
+  color: 'rgba(136, 55, 131, 0.8)',
+  zIndex: '80'
 }
 
+let song1Position = {
+  position: 'fixed',
+  top: '200px',
+  left: '250px',
+}
 
-//let loginTrigger = true;
-
-
-//function logOut() {
-//  loginTrigger = true;
-//}
+let song2Position = {
+  position: 'fixed',
+  top: '250px',
+  left: '710px',
+}
 
 class LoginHeader extends Component {
   render() {
@@ -224,14 +240,48 @@ class YourChats extends Component {
   }
 }
 
-class HoverDetail extends Component {
+class HoverDetail1 extends Component {
   render() {
     return (
-      <p>cat</p>
-
-    )
+      <div style ={{...hoverPlayStyleGen, ...song1Position}}>
+        <h3 style={{borderBottom: 'solid', borderWidth: '1.5px', fontWeight:'bold', textAlign: 'left', margin:'5px'}}>Swords_of_the_Clock</h3>
+        <div style ={{display: 'flex', justifyContent: 'space-between'}}>
+          <div style={{width:'30%'}}>
+            <img src={song1Cover} style={{width: '60px', height: 'auto'}}/>
+          </div>
+          <div style={{width: '48%'}}>
+            <h3 style={{textAlign: 'left', margin: '2px', fontSize: '18px', fontWeight: 'bold'}}>Who I'm Meant To Be</h3>
+            <h4 style={{textAlign: 'left', margin: '2px'}}>Anthem Lights</h4>
+          </div>
+          <div style={{width: '22%'}}>
+            <img src={playButton} style={{width: '80%', height: 'auto', margin: '7px'}}/>
+          </div>
+        </div>
+      </div>
+    );
   }
+}
 
+class HoverDetail2 extends Component {
+  render() {
+    return (
+      <div style ={{...hoverPlayStyleGen, ...song2Position}}>
+        <h3 style={{borderBottom: 'solid', borderWidth: '1.5px', fontWeight:'bold', textAlign: 'left', margin:'5px'}}>Beats_of_a_lost_heart</h3>
+        <div style ={{display: 'flex', justifyContent: 'space-between'}}>
+          <div style={{width:'30%'}}>
+            <img src={song2Cover} style={{width: '60px', height: 'auto'}}/>
+          </div>
+          <div style={{width: '48%'}}>
+            <h3 style={{textAlign: 'left', margin: '2px', fontSize: '18px', fontWeight: 'bold'}}>Voice of Truth</h3>
+            <h4 style={{textAlign: 'left', margin: '2px'}}>Casting Crowns</h4>
+          </div>
+          <div style={{width: '22%'}}>
+            <img src={playButton} style={{width: '80%', height: 'auto', margin: '7px'}}/>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 
@@ -240,6 +290,22 @@ class Silhouette extends Component {
   render() {
     return (
       <img src={silhouette} style={{width: '100px', height: 'auto', zIndex:'50'}}/>
+    );
+  }
+}
+
+class Silhouette2 extends Component {
+  render() {
+    return (
+      <img src={silhouette} style={{width: '120px', height: 'auto', zIndex:'100'}}/>
+    );
+  }
+}
+
+class Silhouette3 extends Component {
+  render() {
+    return (
+      <img src={silhouetteHighlighted} style={{width: '120px', height: 'auto', zIndex:'100'}}/>
     );
   }
 }
@@ -396,11 +462,23 @@ class App extends Component {
       return (
         <div className="App">
           <BackgroundSilhouettes/>
-            <div style={{position:'fixed', top: '0', width: '100%', height: '150px', filter: 'blur(100px)', backgroundColor: 'rgba(299, 299, 299, .3)', zIndex: '99'}}></div>
           <div style={{position: 'fixed', top: '0', zIndex: '100'}}>
             <TitleHeader/>
           </div>
-          <div style={{position: 'fixed', bottom: '0', zIndex: '50'}}>
+          <HoverDetail1/>
+          <HoverDetail2/>
+          <div style={{position: 'fixed', top: '270px', left: '155px', zIndex: '100'}}>
+            <Silhouette2/>
+          </div>
+          <div style={{position: 'fixed', top: '300px', left: '615px', zIndex: '100'}}>
+            <Silhouette2/>
+          </div>
+          <div style={{position: 'fixed', bottom: '10px', width: '100%', zIndex: '90'}}>
+            <div style={{display: 'block', margin: 'auto'}}>
+              <Silhouette3/>
+            </div>
+          </div>
+          <div style={{position: 'fixed', bottom: '0', zIndex: '100'}}>
             <DetailsBanner user={this.state.serverData.user} currentSong={this.state.serverData.user.currentSong}/>
           </div>
         </div>
